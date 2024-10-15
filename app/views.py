@@ -1,9 +1,59 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import UserRegistration
+from .serializers import UserRegistrationSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
+# @api_view(['GET'])
+# def showdata(request):
+#     obke = UserRegistration.objects.all()
+#     print(obke)
 
+#     # data = data
+#     # print(data)
+#     serializer = UserRegistrationSerializer(obke, many=True)
+#     print(serializer)
+
+#     return Response({'status': 200, 'message': 'User registered successfully!', 'data': serializer.data})
+
+@api_view(['POST'])
 def register(request):
-    if request.method == 'POST':
-        username = request.POST['user_name']
-        phone_or_email = request.POST['phone_and_email']
-        return HttpResponse("User registered successfully!")
+    data = request.data
+    
+    serializer = UserRegistrationSerializer(data=data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'status': 200, 'message': 'User registered successfully!'})
+    else:
+        print(serializer.errors)  # Show any serializer errors in the console
+        return Response({'status': 400, 'errors': serializer.errors})
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# {
+#     "user_name": "testuser",
+#     "phone_and_email": "testuser@example.com",
+#     "password": "testpass123",
+#     "date_of_brith": "2000-01-01",
+#     "gender": "male"
+# }
