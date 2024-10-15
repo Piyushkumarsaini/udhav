@@ -17,7 +17,7 @@ from rest_framework.decorators import api_view
 #     return Response({'status': 200, 'message': 'User registered successfully!', 'data': serializer.data})
 
 @api_view(['POST'])
-def register(request):
+def registration(request):
     data = request.data
     
     serializer = UserRegistrationSerializer(data=data)
