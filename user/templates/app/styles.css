@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e7dada;
+}
+
+.form-container {
+    width: 300px;
+    margin: 100x auto;
+    padding: 20px;
+    background-color: #f8f5f5;
+    box-shadow: 0px 0px 10px 0px #131212;
+}
+
+h2 {
+    text-align: center;
+    color: #eb65c3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label, input, select, button {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
